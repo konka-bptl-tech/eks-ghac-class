@@ -1,0 +1,19 @@
+name: Destroy Dev Environment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: class  # or use 'ubuntu-latest' if not on EC2 with IAM role
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Destroy
+        run: terraform Destroy -var-file=env/dev/main.tfvars -auto-approve
