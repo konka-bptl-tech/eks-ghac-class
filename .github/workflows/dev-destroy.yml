@@ -16,4 +16,4 @@ jobs:
         run: terraform init
 
       - name: Terraform Destroy
-        run: terraform Destroy -var-file=env/dev/main.tfvars -auto-approve
+        run: terraform destroy -var-file=env/dev/main.tfvars -auto-approve
