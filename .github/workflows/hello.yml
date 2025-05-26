@@ -1,8 +1,7 @@
 name: Check Terraform Version
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   check-terraform-version:
@@ -14,3 +13,6 @@ jobs:
 
       - name: Terraform Version
         run: terraform version
+
+      - name: AWS STS Get Caller Identity
+        run: aws sts get-caller-identity
