@@ -8,4 +8,5 @@ module "eks_vpc" {
   public_subnet_cidr_block = var.vpc["public_subnet_cidr_block"]
   private_subnet_cidr_block = var.vpc["private_subnet_cidr_block"]
   db_subnet_cidr_block = var.vpc["db_subnet_cidr_block"]
+  enable_nat = var.vpc["enable_nat"]
 }

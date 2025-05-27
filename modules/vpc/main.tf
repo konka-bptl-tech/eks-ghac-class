@@ -113,3 +113,24 @@ resource "aws_route_table_association" "db" {
   subnet_id      = aws_subnet.db[count.index].id
   route_table_id = aws_route_table.db.id
 }
+
+resource "aws_eip" "nat_eip" {
+  count = var.enable_nat ? 1 : 0
+  domain   = "vpc"
+}
+resource "aws_nat_gateway" "example" {
+  count = var.enable_nat ? 1 : 0
+  allocation_id = aws_eip.nat_eip[count.index].id
+  subnet_id     = aws_subnet.public[0].id
+
+  tags = merge(
+    {
+    Name = "${local.name}-nat"
+    },
+    var.common_tags
+  )
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.gw]
+}

@@ -33,3 +33,7 @@ variable "db_subnet_cidr_block" {
   description = "List of database subnet CIDR blocks"
   type        = list(string)  
 }
+variable "enable_nat" {
+  description = "Enable NAT Gateway"
+  type        = bool  
+}
