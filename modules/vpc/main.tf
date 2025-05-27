@@ -69,3 +69,30 @@ resource "aws_subnet" "db" {
   )
 }
 
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+  tags = merge(
+    {
+    Name = "${local.name}-public-rt"
+    },
+    var.common_tags
+  )
+}
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+  tags = merge(
+    {
+    Name = "${local.name}-private-rt"
+    },
+    var.common_tags
+  )
+}
+resource "aws_route_table" "db" {
+  vpc_id = aws_vpc.main.id
+  tags = merge(
+    {
+    Name = "${local.name}-db-rt"
+    },
+    var.common_tags
+  )
+}
