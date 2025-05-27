@@ -12,5 +12,5 @@ common_variables = {
 vpc = {
   vpc_cidr_block = "10.1.0.0/16"
   azs = ["us-east-1a", "us-east-1b"]
-  public_subnet_cidr_block = ["10.1.1.0/24","10.1.1.0/24"]
+  public_subnet_cidr_block = ["10.1.1.0/24","10.1.2.0/24"]
 }
