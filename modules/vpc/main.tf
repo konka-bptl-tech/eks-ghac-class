@@ -39,6 +39,3 @@ resource "aws_subnet" "public" {
     var.common_tags
   )
 }
-
-
-
