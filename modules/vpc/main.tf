@@ -96,3 +96,17 @@ resource "aws_route_table" "db" {
     var.common_tags
   )
 }
+
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public[*].id[count.index]
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "private" {
+  subnet_id      = aws_subnet.private[*].id[count.index]
+  route_table_id = aws_route_table.private.id
+}
+resource "aws_route_table_association" "db" {
+  subnet_id      = aws_subnet.db[*].id[count.index]
+  route_table_id = aws_route_table.db.id
+}
