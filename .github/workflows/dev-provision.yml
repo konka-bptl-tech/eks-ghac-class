@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'env/**'
   workflow_dispatch:
 
 jobs:
