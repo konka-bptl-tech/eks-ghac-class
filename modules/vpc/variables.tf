@@ -24,3 +24,12 @@ variable "azs" {
   description = "List of availability zones"
   type        = list(string)
 }
+
+variable "private_subnet_cidr_block" {
+  description = "List of private subnet CIDR blocks"
+  type        = list(string)
+}
+variable "db_subnet_cidr_block" {
+  description = "List of database subnet CIDR blocks"
+  type        = list(string)  
+}

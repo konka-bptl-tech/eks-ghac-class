@@ -6,4 +6,6 @@ module "eks_vpc" {
   vpc_cidr_block = var.vpc["vpc_cidr_block"]
   azs = var.vpc["azs"]
   public_subnet_cidr_block = var.vpc["public_subnet_cidr_block"]
+  private_subnet_cidr_block = var.vpc["private_subnet_cidr_block"]
+  db_subnet_cidr_block = var.vpc["db_subnet_cidr_block"]
 }
