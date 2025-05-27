@@ -140,12 +140,6 @@ resource "aws_route" "public_internet" {
   gateway_id = aws_internet_gateway.gw.id
   destination_cidr_block   = "0.0.0.0/0"
 }
-
-resource "aws_route" "private_internet" {
-  route_table_id            = aws_route_table.private.id
-  nat_gateway_id  = aws_nat_gateway.example[0].id
-  destination_cidr_block   = "0.0.0.0/0"
-}
 resource "aws_route" "private_nat" {
   route_table_id            = aws_route_table.private.id
   nat_gateway_id  = aws_nat_gateway.example[0].id
