@@ -5,8 +5,7 @@ on:
 
 jobs:
   terraform:
-    runs-on: class  # or use 'ubuntu-latest' if not on EC2 with IAM role
-
+    runs-on: class
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4

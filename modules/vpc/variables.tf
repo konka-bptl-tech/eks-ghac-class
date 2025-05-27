@@ -15,3 +15,12 @@ variable "common_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "public_subnet_cidr_block" {
+  description = "List of public subnet CIDR blocks"
+  type        = list(string)
+}
+variable "azs" {
+  description = "List of availability zones"
+  type        = list(string)
+}
