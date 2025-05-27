@@ -134,3 +134,25 @@ resource "aws_nat_gateway" "example" {
   # on the Internet Gateway for the VPC.
   depends_on = [aws_internet_gateway.gw]
 }
+
+resource "aws_route" "public_internet" {
+  route_table_id            = aws_route_table.public.id
+  gateway_id = aws_internet_gateway.gw.id
+  destination_cidr_block   = "0.0.0.0/0"
+}
+
+resource "aws_route" "private_internet" {
+  route_table_id            = aws_route_table.private.id
+  nat_gateway_id  = aws_nat_gateway.example[count.index].id
+  destination_cidr_block   = "0.0.0.0/0"
+}
+resource "aws_route" "private_nat" {
+  route_table_id            = aws_route_table.private.id
+  nat_gateway_id  = aws_nat_gateway.example[count.index].id
+  destination_cidr_block   = "0.0.0.0/0"
+}
+resource "aws_route" "db_nat" {
+  route_table_id            = aws_route_table.db.id
+  nat_gateway_id  = aws_nat_gateway.example[count.index].id
+  destination_cidr_block   = "0.0.0.0/0"
+}
