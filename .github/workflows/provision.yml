@@ -1,22 +1,49 @@
-name: Terraform CI for Infrastructure
+name: Terraform Provision
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  terraform:
-    runs-on: class  # or use 'ubuntu-latest' if not on EC2 with IAM role
+  plan:
+    name: Terraform Plan
+    runs-on: class
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./env
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
 
-      - name: Terraform Init
-        run: terraform init
+    - name: Terraform Init
+      run: terraform init -backend-config=env/dev/backend.tfvars
 
-      - name: Terraform Plan
-        run: terraform plan -var-file=env/dev/main.tfvars
+    - name: Terraform Plan
+      run: terraform plan -var-file=env/dev/main.tfvars -input=false
 
-      - name: Terraform Apply
-        run: terraform apply -var-file=env/dev/main.tfvars -auto-approve
+  apply:
+    name: Terraform Apply (Manual Approval)
+    runs-on: class
+    needs: plan
+    environment:
+      name: dev
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./env
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Terraform Init
+      run: terraform init -backend-config=env/dev/backend.tfvars
+
+    - name: Terraform Apply
+      run: terraform apply -var-file=env/dev/main.tfvars -auto-approve -input=false
+
