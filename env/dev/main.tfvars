@@ -24,4 +24,14 @@ eks = {
   endpoint_public_access = true
   public_access_cidrs = ["0.0.0.0/0"]
   bootstrap_cluster_creator_admin_permissions = true
+  node_groups = {
+    mini = {
+      instance_type = "t3.medium"
+      capacity_type = "ON_DEMAND"
+      desired_capacity = 2
+      max_size = 3
+      min_size = 1
+      key_name = "siva"
+    }
+  }
 }
