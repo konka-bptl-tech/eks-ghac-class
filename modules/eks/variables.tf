@@ -40,4 +40,4 @@ variable "bootstrap_cluster_creator_admin_permissions" {
   type        = bool
 }
 
-variable "node_groups" {}
+# variable "node_groups" {}
