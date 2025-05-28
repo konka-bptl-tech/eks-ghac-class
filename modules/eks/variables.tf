@@ -39,3 +39,5 @@ variable "bootstrap_cluster_creator_admin_permissions" {
   description = "Enable admin permissions for the bootstrap cluster creator."
   type        = bool
 }
+
+variable "node_groups" {}
