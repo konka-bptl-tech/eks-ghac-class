@@ -12,7 +12,7 @@ module "eks_vpc" {
 }
 
 module "eks"{
-  depends_on = [ "module.eks_vpc "]
+  depends_on = [ "module.eks_vpc"]
   source = "./modules/eks"
   environment = var.common_variables["environment"]
   project_name = var.common_variables["project_name"]

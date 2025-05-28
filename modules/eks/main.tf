@@ -15,7 +15,7 @@ resource "aws_eks_cluster" "example" {
 
   vpc_config {
     subnet_ids = var.subnet_ids_cluster
-    security_group_ids = aws_security_group.allow_all.id
+    security_group_ids = [aws_security_group.allow_all.id]
     vpc_id = var.vpc_id
     endpoint_private_access = var.endpoint_private_access
     endpoint_public_access  = var.endpoint_public_access
