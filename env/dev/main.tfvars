@@ -17,3 +17,11 @@ vpc = {
   db_subnet_cidr_block = ["10.1.21.0/24","10.1.22.0/24"]
   enable_nat = true
 }
+
+eks = {
+  cluster_version = "1.31"
+  endpoint_private_access = true
+  endpoint_public_access = true
+  public_access_cidrs = ["0.0.0.0/0"]
+  bootstrap_cluster_creator_admin_permissions = true
+}
