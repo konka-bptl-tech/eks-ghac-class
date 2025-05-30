@@ -153,7 +153,7 @@ resource "aws_route" "db_nat" {
 
 
 resource "aws_security_group" "allow_all" {
-  name        = "${local.name}-cluster-sg"
+  name        = "${local.name}-cluster-sg1"
   description = "Security group that allows all inbound and outbound traffic"
   vpc_id      = aws_vpc.main.id
 
@@ -173,7 +173,7 @@ resource "aws_security_group" "allow_all" {
 
   tags = merge(
     {
-    Name = "${local.name}-cluster-sg"
+    Name = "${local.name}-cluster-sg1"
     },
     var.common_tags
   )
