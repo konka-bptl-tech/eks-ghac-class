@@ -24,6 +24,14 @@ eks = {
   endpoint_public_access = true
   public_access_cidrs = ["0.0.0.0/0"]
   bootstrap_cluster_creator_admin_permissions = true
+  addons = {
+    vpc-cni                = "v1.19.5-eksbuild.3"
+    kube-proxy             = "v1.31.7-eksbuild.7"
+    coredns                = "v1.11.4-eksbuild.14"
+    eks-pod-identity-agent = "v1.3.7-eksbuild.2"
+    metrics-server         = "v0.7.2-eksbuild.3"
+    aws-ebs-csi-driver     = "v1.44.0-eksbuild.1"
+  }
   node_groups = {
     mini = {
       instance_types = ["t3.medium"]

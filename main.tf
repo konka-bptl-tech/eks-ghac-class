@@ -26,6 +26,7 @@ module "eks"{
   public_access_cidrs = var.eks["public_access_cidrs"]
   bootstrap_cluster_creator_admin_permissions = var.eks["bootstrap_cluster_creator_admin_permissions"]
   node_groups = var.eks["node_groups"]
+  addons = var.eks["addons"]
 }
 
 module "admin_user" {

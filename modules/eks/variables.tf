@@ -41,3 +41,4 @@ variable "bootstrap_cluster_creator_admin_permissions" {
 }
 
 variable "node_groups" {}
+variable "addons" {}

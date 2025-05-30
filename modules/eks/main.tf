@@ -85,3 +85,13 @@ resource "aws_eks_node_group" "example" {
     aws_iam_role_policy_attachment.example-AmazonEC2ContainerRegistryReadOnly,
   ]
 }
+
+resource "aws_eks_addon" "example" {
+  depends_on = [ aws_eks_node_group.example ]
+  for_each = var.addons
+  cluster_name = aws_eks_cluster.example.name
+  addon_name   = each.key
+  addon_version = each.value
+  resolve_conflicts_on_create = "OVERWRITE"
+}
+
