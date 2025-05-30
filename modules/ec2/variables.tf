@@ -62,7 +62,3 @@ variable "private_key" {
   type        = string
   default     = ""
 }
-variable "iam_instance_profile" {
-  description = "The IAM instance profile to use for the instance"
-  type        = string
-}
