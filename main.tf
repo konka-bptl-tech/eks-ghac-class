@@ -33,7 +33,7 @@ module "admin_user" {
   source                         = "./modules/ec2"
   environment                    = var.common_variables["environment"]
   project_name                   = var.common_variables["project_name"]
-  common_tags                    = var.common_variables["tags"]
+  common_tags                    = var.common_variables["common_tags"]
   ami                            = data.aws_ami.amazon_linux.id
   instance_type                  = var.siva_instance["instance_type"]
   key_name                       = var.siva_instance["key_name"]
